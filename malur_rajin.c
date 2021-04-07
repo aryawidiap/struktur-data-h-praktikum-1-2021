@@ -63,13 +63,10 @@ void moveEachElement(PriorityQueue *list, char cmd[5]){
             (temp->loc)++;
         }    
     } else if(strcmp(cmd, "UP")==0){ //func the first node
-        //printf("MEMINDAHKAN KE ATAS\n");
         (temp->loc)--;
-        //printf("LOKASI: %d; BUKU: %s\n", temp->loc, temp->data);
         while(temp->next != NULL){
             temp = temp->next;
             (temp->loc)--;
-             //printf("LOKASI: %d; BUKU: %s\n", temp->loc, temp->data);
         }    
     }
     
@@ -108,9 +105,6 @@ void pqueue_pop(PriorityQueue *pqueue)
 {
     if (!pqueue_isEmpty(pqueue)) {
         PQueueNode *temp = pqueue->_top;
-        if(pqueue->_top->loc==0){
-            moveEachElement(pqueue, "UP");
-        }
         pqueue->_top = pqueue->_top->next;
         free(temp);
     }
