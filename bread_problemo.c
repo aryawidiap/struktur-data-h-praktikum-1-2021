@@ -136,6 +136,7 @@ int main(int argc, char const *argv[])
             }
         } else {
             printf("TumpukAnnya saLah! :(\n");
+            return 0;
         }
     }
 
@@ -146,8 +147,7 @@ int main(int argc, char const *argv[])
         int dif=stack_size(&Ray)-stack_size(&Kakak), small=stack_size(&Kakak);
         for(int i=0; i<small; i++){ //print out the smaller stack
             printf("%d %d\n", stack_top(&Ray), stack_top(&Kakak));
-            stack_pop(&Ray);
-            stack_pop(&Kakak);
+            stack_pop(&Ray); stack_pop(&Kakak);
         }
         printf("%d :(\n", stack_top(&Ray));
         stack_pop(&Ray);
