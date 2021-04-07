@@ -24,29 +24,36 @@ Untuk mempermudah visualisasi solusi dari permasalahan Nadut & Cayo, digunakan s
 5 4 7 2 1
 ```
 
-Maka outputnya adalah
+![nc1](/img/si_nc1.jpg)
+
+Stack kosong, `push` 5 ke `myStack`
+
+![nc2](/img/si_nc2.jpg)
+
+4 kurang dari `stack_top`, `push` 4 ke `myStack`
+
+![nc3a](/img/si_nc3a.jpg)
+![nc3b](/img/si_nc3b.jpg)
+
+7 lebih dari `stack_top`, `pop` terus `myStack` hingga `stack_top` >= 7 atau `stack_isEmpty`
+
+![nc4](/img/si_nc4.jpg)
+
+2 kurang dari `stack_top`, `push` 2 ke `myStack`
+
+![nc5](/img/si_nc5.jpg)
+
+1 kurang dari `stack_top`, `push` 1 ke `myStack`
+
+![nc6](/img/si_nc6.jpg)
+
+Salin nilai elemen stack ke array `arr` secara terbalik.
+Kemudian, print anggota arr
+
+Output:
 ```
 Susunan blok yang disusun Nadut dan Cayo adalah : 7 2 1
 ```
-
-![ab_1](/img/ab_1.jpg)
-
-Isi `leftMax`
-
-![ab_2](/img/ab_2.jpg)
-
-
-Isi `rightMax`
-
-![ab_3](/img/ab_3.jpg)
-
-`sum` = min(3, 4) - 3 + min(3, 4) - 0 + min(3, 4) - 0 + min(3, 4) - 2 + min(3, 4) - 0 + min(4, 4) - 4
-
-`sum` = 3 - 3 + 3 - 0 + 3 - 0 + 3 - 2 + 3 - 0 + 4 - 4
-
-`sum` = 3 + 3 + 1 + 3 = 10
-
-![ab_fs](/img/ab_fs.jpg)
 
 ## Genjil Ganap
 ### Verdict
@@ -85,7 +92,32 @@ Untuk mempermudah visualisasi solusi dari permasalahan Genjil Ganap, digunakan s
 1002
 6969
 ```
-Maka keluarannya
+
+![gg0](/img/si_gg0.jpg)
+
+Inisialisasi priority queue `myPque`
+
+![gg1](/img/si_gg1.jpg)
+
+`1012` genap, `myPque` kosong, dimasukkan ke depan dan belakang
+
+![gg2](/img/si_gg2.jpg)
+
+`222` genap, dimasukkan ke depan
+
+![gg3](/img/si_gg3.jpg)
+
+`1001` ganjil, dimasukkan ke belakang
+
+![gg4](/img/si_gg4.jpg)
+
+`1002` genap, dimasukkan ke depan
+
+![gg5](/img/si_gg5.jpg)
+
+`6969` ganjil, dimasukkan ke belakang
+
+Output:
 ```
 Urutan Mobil Roy : 1002 222 1012 1001 6969
 ```
@@ -159,28 +191,32 @@ Untuk mempermudah visualisasi solusi dari permasalahan Bread Problemo, digunakan
 2 2
 ```
 
-![ab_1](/img/si_bp1.jpg)
+![bp1](/img/si_bp1.jpg)
+
 Isi stack `Ray` dengan banyak roti
 
-![ab_2](/img/si_bp2.jpg)
+![bp2](/img/si_bp2.jpg)
+
 Pindahkan 1 roti ke stack `Kakak`
 
-![ab_3](/img/si_bp3.jpg)
+![bp3](/img/si_bp3.jpg)
+
 Pindahkan 2 roti ke stack `Kakak`
 
-![ab_1](/img/si_bp4.jpg)
+![bp4](/img/si_bp4.jpg)
 
 Pindahkan 1 roti ke stack `Kakak`
 
-![ab_2](/img/si_bp5.jpg)
+![bp5](/img/si_bp5.jpg)
+
 Pindahkan 1 roti ke stack `Ray`
 
-Isi `rightMax`
+![bp6](/img/si_bp6.jpg)
 
-![ab_3](/img/si_bp6.jpg)
 Pindahkan 2 roti ke stack `Ray`
 
 stack `Ray` = `[2,3,4,5]`
+
 stack `Kakak` = `[1]`
 
 Output:
