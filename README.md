@@ -216,8 +216,14 @@ WA
 #### Bukti
 ![verdict_mara](/img/verdict_mara.jpg)
 ### Penjelasan Soal
-
+Diberikan tumpukan buku dengan banyak soalnya. Program diminta untuk mengeluarkan buku dengan jumlah soal paling sedikit dan banyak buku yang harus dipindahkan untuk bisa mengeluarkan buku tersebut dari tumpukan.
 ### Penjelasan Solusi
+Solusi yang diberikan adalah dengan menggunakan `priority queue` dengan modifikasi agar tetap menyimpan data urutan data dimasukkan.
+Pertama, program akan menerima berapa banyak testcase yang akan diberikan, disimpan dalam variabel `tc`. Lalu, diadakan looping sebanyak `tc`. Di dalam loop, diterima input yang dapat berupa `-1` untuk mengeluarkan buku atau angka lainnya yang merupakan jumlah soal. Input disimpan dalam variabel `cmd`. Apabila `cmd!=-1` atau merupakan jumlah soal, maka terima input nama mata pelajaran (`mapel`) kemudian push banyak soal dan nama mata pelajaran ke pqueue `buku`.
+
+Pada fungsi `push`, terjadi beberapa evaluasi. Program dibuat untuk memprioritaskan data dengan `soal` paling sedikit sehingga secara program akan terurut dari `soal` tersedikit sampai terbanyak. Namun, `node` tetap dapat menyimpan bagaimana tumpukan dalam dunia nyata dengan informasi `loc`. Fungsi `moveEachElement(pqueue, "DOWN")` berfungsi layaknya pemberi informasi ke `node` yang sudah ada bahwa ada `node` yang akan ditumpuk di atas mereka, dengan menambahkan `loc` tiap elemen dengan 1.
+
+Jika `cmd==-1`, maka elemen terdepan pqueue `buku` akan dikeluarkan (`loc` kemudian `mapel`nya). Kemudian, `nodes` yang ada dibelakang `top` secara program, tapi di atas dalam kenyataan, dihapuskan (`free`). Hal ini dilakukan dengan mengecek `loc` masing-masing elemen, di mana jika kurang dari `loc` `top`, maka akan dihapus. Jika `loc` elemen lebih dari `loc` `top`, maka `loc`nya dikurangi sebanyak buku yang ada di atas `top`+1. Terakhir, `pop``buku` agar `top` dihapus.
 
 ### Visualisasi Solusi
 Untuk mempermudah visualisasi solusi dari permasalahan Malur Rajin, digunakan sample input berikut:
@@ -231,6 +237,32 @@ Untuk mempermudah visualisasi solusi dari permasalahan Malur Rajin, digunakan sa
 3 fisika
 -1
 ```
+
+![mr1](/img/si_mr1.jpg)
+
+`enggres` dimasukkan, diletakkan pertama pada `buku`. Banyak soal dan lokasi disimpan pada var `.soal` dan `.loc`
+
+![mr2](/img/si_mr2.jpg)
+
+`matematika` dimasukkan, diletakkan pertama pada `buku`, karena soalnya lebih sedikit dibandingkan `enggres`. Lokasinya 0, lokasi `enggres`+1
+
+![mr3](/img/si_mr3.jpg)
+
+`geo` dimasukkan, diletakkan kedua pada `buku`, karena soalnya lebih banyak dibandingkan `matematika`. Lokasinya 0 karena pada keadaan sebenarnya terletak paling atas, lokasi `enggres` dan `matematika` + 1
+
+![mr4](/img/si_mr4.jpg)
+
+Command `-1` meminta `matematika` dikeluarkan, maka dilakukan `pop` dan me`remove` segala elemen dengan `loc` < `loc` `matematika` (dalam hal ini `geo`).
+Lokasi lainnya `-2`
+
+![mr5](/img/si_mr5.jpg)
+
+`fisika` dimasukkan, diletakkan pertama pada `buku`, karena soalnya lebih sedikit dibandingkan `enggres`. Lokasinya 0, lokasi `enggres`+1
+
+![mr6](/img/si_mr6.jpg)
+
+Command `-1` meminta `fisika` dikeluarkan, maka dilakukan `pop` dan me`remove` segala elemen dengan `loc` < `loc` `fisika` (dalam hal ini __tidak ada__).
+Lokasi lainnya `-1` (`enggres`)
 
 Output:
 ```
