@@ -212,14 +212,14 @@ Output:
 # Tambahan
 ## MALUR RAJIN
 ### Verdict
-WA
+AC saat perbaikan
 #### Bukti
 ![verdict_mara](/img/verdict_mara.jpg)
 ### Penjelasan Soal
 Diberikan tumpukan buku dengan banyak soalnya. Program diminta untuk mengeluarkan buku dengan jumlah soal paling sedikit dan banyak buku yang harus dipindahkan untuk bisa mengeluarkan buku tersebut dari tumpukan.
 ### Penjelasan Solusi
 Solusi yang diberikan adalah dengan menggunakan `priority queue` dengan modifikasi agar tetap menyimpan data urutan data dimasukkan.
-Pertama, program akan menerima berapa banyak testcase yang akan diberikan, disimpan dalam variabel `tc`. Lalu, diadakan looping sebanyak `tc`. Di dalam loop, diterima input yang dapat berupa `-1` untuk mengeluarkan buku atau angka lainnya yang merupakan jumlah soal. Input disimpan dalam variabel `cmd`. Apabila `cmd!=-1` atau merupakan jumlah soal, maka terima input nama mata pelajaran (`mapel`) kemudian push banyak soal dan nama mata pelajaran ke pqueue `buku`.
+Pertama, program akan menerima berapa banyak testcase yang akan diberikan, disimpan dalam variabel `tc`. Lalu, diadakan looping sebanyak `tc`. Di dalam loop, diterima input yang dapat berupa `-1` untuk mengeluarkan buku atau angka lainnya yang merupakan jumlah soal. Input disimpan dalam variabel `cmd`. Apabila `cmd!=-1` atau merupakan jumlah soal, maka terima input nama mata pelajaran (`mapel`). Apabila banyak soal adalah 0, lewati iterasi. Selain 0, push banyak soal dan nama mata pelajaran ke pqueue `buku`.
 
 Pada fungsi `push`, terjadi beberapa evaluasi. Program dibuat untuk memprioritaskan data dengan `soal` paling sedikit sehingga secara program akan terurut dari `soal` tersedikit sampai terbanyak. Namun, `node` tetap dapat menyimpan bagaimana tumpukan dalam dunia nyata dengan informasi `loc`. Fungsi `moveEachElement(pqueue, "DOWN")` berfungsi layaknya pemberi informasi ke `node` yang sudah ada bahwa ada `node` yang akan ditumpuk di atas mereka, dengan menambahkan `loc` tiap elemen dengan 1.
 

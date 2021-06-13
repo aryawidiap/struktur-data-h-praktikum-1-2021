@@ -63,10 +63,13 @@ void moveEachElement(PriorityQueue *list, char cmd[5]){
             (temp->loc)++;
         }    
     } else if(strcmp(cmd, "UP")==0){ //func the first node
+        //printf("MEMINDAHKAN KE ATAS\n");
         (temp->loc)--;
+        //printf("LOKASI: %d; BUKU: %s\n", temp->loc, temp->data);
         while(temp->next != NULL){
             temp = temp->next;
             (temp->loc)--;
+             //printf("LOKASI: %d; BUKU: %s\n", temp->loc, temp->data);
         }    
     }
     
@@ -105,6 +108,9 @@ void pqueue_pop(PriorityQueue *pqueue)
 {
     if (!pqueue_isEmpty(pqueue)) {
         PQueueNode *temp = pqueue->_top;
+        if(pqueue->_top->loc==0){
+            moveEachElement(pqueue, "UP");
+        }
         pqueue->_top = pqueue->_top->next;
         free(temp);
     }
@@ -149,19 +155,22 @@ void forEachElement(PriorityQueue *list, void (*func)(PQueueNode *elem)){
 int main(int argc, char const *argv[])
 {
     // Buat objek Stack
-    PriorityQueue buku; //pake priority queue!
+    PriorityQueue buku;
     pqueue_init(&buku);
     int tc, cmd;
     char mapel[MAX_LEN+1];
     scanf("%d", &tc);
     // Operasi pada stack
     for(int i=0; i<tc; i++){
-        scanf("%d", &cmd); //prioritynya banyak soal (min priority)
+        scanf("%d", &cmd);
         if(cmd!=-1){
             scanf("%s", mapel);
+            if(cmd==0)
+                continue;
             pqueue_push(&buku, cmd, mapel);
+            //forEachElement(&buku, printElement);
         } else{
-            printf("%d ", buku._top->loc); //simpen lokasi di stack di variabel loc
+            printf("%d ", buku._top->loc);
             printf("%s\n", pqueue_top(&buku));
             int tumpuk = buku._top->loc;
             PQueueNode *prev = buku._top, *nex = buku._top->next, *temp = NULL;
@@ -169,13 +178,15 @@ int main(int argc, char const *argv[])
                 if(tumpuk == 0){
                     break;
                 }
-                if(nex->loc < tumpuk){ //menghapuskan node-node yg ada di "atas" node dengan prioritas tertinggi
+                if(nex->loc < tumpuk){
+                    //printf("prev: %s; nex: %s\n", prev->data, nex->data);
                     temp = nex;
                     nex = nex->next;
                     prev->next = nex;
                     free(temp);
                 } else {
-                    nex->loc -= (tumpuk+1); //"menaikkan" node-node yg ada di "bawah" node utama
+                    //printf("prev: %s; nex: %s\n", prev->data, nex->data);
+                    nex->loc -= (tumpuk+1);
                     prev=nex;
                     nex=nex->next;
                 }
